@@ -1,8 +1,14 @@
 import lyricsgenius
 import credentials
+import time
 import random
 import tweepy
 
+CONSUMER_API_KEY: credentials.CONSUMER_API_KEY
+CONSUMER_API_SECRET_KEY: credentials.CONSUMER_API_SECRET_KEY
+ACCESS_TOKEN: credentials.ACCESS_TOKEN
+ACCESS_TOKEN_SECRET: credentials.ACCESS_TOKEN_SECRET
+genius_client_access_token = credentials.genius_client_access_token
 
 all_songs=["Dog Days Are Over" , "Jenny of Oldstones (Game of Thrones)" , "Shake It Out" , "Hunger" , "King" , "Delilah" ,
            "Sky Full of Song" , "Big God" , "Never Let Me Go" , "Cosmic Love" , "Patricia" , "Wish That You Were Here" , "The End of Love" ,
@@ -76,16 +82,21 @@ def get_tweet_from(lyrics):
 
 def handler():
     auth = tweepy.OAuth1UserHandler(
-        'CONSUMER_API_KEY',
-        'CONSUMER_API_SECRET_KEY'
+        CONSUMER_API_KEY,
+        CONSUMER_API_SECRET_KEY
     )
     auth.set_access_token(
-        'ACCESS_TOKEN',
-        'ACCESS_TOKEN_SECRET'
+        ACCESS_TOKEN,
+        ACCESS_TOKEN_SECRET
     )
     api = tweepy.API(auth)
     lyrics, song = get_raw_lyrics()
     tweet = get_tweet_from(lyrics)
     status = api.update_status(tweet)
+    interval = 60 * 60 * 1
+    time.sleep(interval)
 
     return tweet
+
+if __name__ == "__main__":
+     handler()
