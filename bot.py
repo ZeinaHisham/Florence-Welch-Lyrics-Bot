@@ -1,14 +1,14 @@
-import lyricsgenius
-import credentials
+import os
 import time
-import random
 import tweepy
+import random
+import lyricsgenius
 
-CONSUMER_API_KEY: credentials.CONSUMER_API_KEY
-CONSUMER_API_SECRET_KEY: credentials.CONSUMER_API_SECRET_KEY
-ACCESS_TOKEN: credentials.ACCESS_TOKEN
-ACCESS_TOKEN_SECRET: credentials.ACCESS_TOKEN_SECRET
-genius_client_access_token = credentials.genius_client_access_token
+CONSUMER_API_KEY:  os.environ.get.CONSUMER_API_KEY
+CONSUMER_API_SECRET_KEY:  os.environ.get.CONSUMER_API_SECRET_KEY
+ACCESS_TOKEN:  os.environ.get.ACCESS_TOKEN
+ACCESS_TOKEN_SECRET:  os.environ.get.ACCESS_TOKEN_SECRET
+genius_client_access_token =  os.environ.get.genius_client_access_token
 
 all_songs=["Dog Days Are Over" , "Jenny of Oldstones (Game of Thrones)" , "Shake It Out" , "Hunger" , "King" , "Delilah" ,
            "Sky Full of Song" , "Big God" , "Never Let Me Go" , "Cosmic Love" , "Patricia" , "Wish That You Were Here" , "The End of Love" ,
